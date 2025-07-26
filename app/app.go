@@ -57,11 +57,16 @@ func greeting(c *cli.Context) error {
 	return nil
 }
 
-func findIps(c *cli.Context) error {
+func getHostValue(c *cli.Context) string {
 	host := c.String("host")
 	if host == "" {
 		host = "localhost"
 	}
+	return host
+}
+
+func findIps(c *cli.Context) error {
+	host := getHostValue(c)
 	ips, err := net.LookupIP(host)
 	if err != nil {
 		log.Fatal(err)
@@ -73,10 +78,7 @@ func findIps(c *cli.Context) error {
 }
 
 func findServers(c *cli.Context) error {
-	host := c.String("host")
-	if host == "" {
-		host = "localhost"
-	}
+	host := getHostValue(c)
 	servers, err := net.LookupNS(host)
 	if err != nil {
 		log.Fatal(err)
