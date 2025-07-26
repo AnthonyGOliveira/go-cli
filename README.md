@@ -1,18 +1,34 @@
+
 # go-cli
 
-## Descrição
-Projeto CLI em Go para demonstração de comandos e estrutura básica.
+Uma aplicação de linha de comando (CLI) simples desenvolvida em Go utilizando o pacote [urfave/cli](https://github.com/urfave/cli).
 
-## Como iniciar o projeto
+## Funcionalidades
+
+- **hello**: Exibe uma mensagem de saudação personalizada.
+  - Parâmetro: `--name` (opcional) — Nome da pessoa a ser saudada. Padrão: "Mundo".
+  - Exemplo: `go run main.go hello --name=João`
+
+- **ip**: Busca e exibe os endereços IP de um host informado.
+  - Parâmetro: `--host` (opcional) — Nome do host para consulta. Padrão: "localhost".
+  - Exemplo: `go run main.go ip --host=google.com`
+
+## Pacotes Utilizados
+
+- [urfave/cli/v2](https://github.com/urfave/cli): Framework para construção de aplicações CLI em Go.
+- [net](https://pkg.go.dev/net): Utilizado para realizar consultas de IPs de hosts.
+- [log](https://pkg.go.dev/log): Para tratamento e exibição de erros.
+- [fmt](https://pkg.go.dev/fmt): Para formatação e exibição de mensagens no terminal.
+
+## Como executar
+
 ```bash
-go mod init github.com/AnthonyGOliveira/go-cli
-go run .
+go run main.go [comando] [flags]
 ```
 
-## Estrutura do projeto
-- `main.go`: Arquivo principal do projeto
-- `go.mod`: Gerenciador de dependências do Go
-- `CHANGELOG.md`: Registro de alterações do projeto
+Exemplo:
 
-## Changelog
-Consulte o arquivo [CHANGELOG.md](./CHANGELOG.md) para ver o histórico de alterações.
+```bash
+go run main.go hello --name=Maria
+go run main.go ip --host=example.com
+```
